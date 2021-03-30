@@ -7,7 +7,7 @@ const port = process.env.PORT || 4000;
 (async () => {
   try {
     console.log("Running rollback");
-    await db.rollback();
+    await db.migrate.rollback();
 
     console.log("Running migrations...");
     await db.migrate.latest();
