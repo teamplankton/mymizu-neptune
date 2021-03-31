@@ -1,22 +1,26 @@
 import React from "react";
-// import logo from './logo.svg';
 import "./App.css";
-
-//components
-import Map from "./components/Map";
-import Info from "./components/Info";
-import Navbar from "./components/Navbar";
-import Rating from "./components/Rating";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route as Rt,
+  Redirect,
+} from "react-router-dom";
+import Main from "./components/Main";
 import Route from "./components/Route";
 
 function App() {
   return (
     <div className="App">
-      <Map />
-      <Info />
-      <Navbar />
-      <Rating />
-      <Route />
+      <Router>
+        <Switch>
+          <Rt exact path="/">
+            <Redirect to="/main" />
+          </Rt>
+          <Rt path="/main" component={Main} />
+          <Rt path="/route" component={Route} />
+        </Switch>
+      </Router>
     </div>
   );
 }
