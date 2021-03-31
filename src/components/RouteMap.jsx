@@ -62,7 +62,12 @@ function RouteMap() {
 
   return isLoaded ? (
     <>
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={14}>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={14}
+        options={{ disableDefaultUI: true }}
+      >
         {/* Child components, such as markers, info windows, etc. */}
         <></>
 

@@ -1,19 +1,19 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "mymizu 日本初給水アプリ refill app and sustainability movement",
+  "name": "mymizu 日本初給水アプリ refill app and sustainability movement",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "mymizu-icon.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
     {
-      "src": "logo192.png",
+      "src": "mymizu-icon.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "mymizu-icon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
