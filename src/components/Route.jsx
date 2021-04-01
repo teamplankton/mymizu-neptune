@@ -1,20 +1,25 @@
 import React from "react";
 import RouteMap from "./RouteMap";
 import Navbar from "./Navbar";
+import Info from "./Info";
 
 function Route() {
-  // const [origin, setOrigin] = React.useState(null);
-  // const [originLatLng, setOriginLatLng] = React.useState(null);
-
-  // async function submit() {
-  //   const LatLng = await geocode(origin);
-  //   setOriginLatLng(LatLng);
-  // }
-
+  const [selectedR, setSelectedR] = React.useState(null);
+  const [midTaps, setMidTaps] = React.useState([]);
   return (
     <>
-      <RouteMap />
+      <RouteMap
+        setSelectedR={setSelectedR}
+        midTaps={midTaps}
+        setMidTaps={setMidTaps}
+      />
       <Navbar />
+      {selectedR && (
+        <Info
+          selected={midTaps.filter((i) => i.id === selectedR)[0]}
+          setSelected={setSelectedR}
+        />
+      )}
     </>
   );
 }

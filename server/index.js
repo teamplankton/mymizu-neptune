@@ -24,12 +24,13 @@ const port = process.env.PORT || 4000;
 
 // Endpoints
 const app = express();
+app.use(express.json());
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 
 // Get rating of one tap
-app.get("api/rating/:tap_id", async (req, res) => {
+app.get("/api/rating/:tap_id", async (req, res) => {
   try {
-    const ratings = db("ratings").where("tap_id", req.params.tap_id);
+    const ratings = await db("ratings").where("tap_id", req.params.tap_id);
     res.json(ratings);
   } catch (err) {
     console.log("Error loading ratings!", err);
