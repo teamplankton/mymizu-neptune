@@ -5,15 +5,15 @@ function Info({ selected, setSelected, setRatingDisplay, avgRating }) {
   return (
     <div className="infoContainer">
       <div className="tapName">
-        <h3>{selected.name}</h3>
-        <p>{selected.address}</p>
-        <button
+        <button className="closebtn"
           onClick={() => {
             setSelected(null);
           }}
-        >
-          Close
+          >
+          ×
         </button>
+        <h3>{selected.name}</h3>
+        <p>{selected.address}</p>
       </div>
       <div className="aveRate">
         <p>{`⭐️ ${avgRating}`}</p>

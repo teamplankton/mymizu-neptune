@@ -29,3 +29,26 @@
   text-align: left;
   margin: 15px;
 }
+
+.closebtn {
+  font-size: 100%;/*ボタンの大きさ*/
+  font-weight: bold;
+  border: 1px;
+  color: #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  width: 1.3em;
+  line-height: 1.3em;
+  cursor: pointer;
+  transition: .2s;
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.closebtn:hover{
+  opacity: 0.5;
+  color: #999;
+}
