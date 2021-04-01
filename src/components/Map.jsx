@@ -7,7 +7,8 @@ const containerStyle = {
   height: "90vh",
 };
 
-function Map({ taps, setTaps, setSelected }) {
+function Map({ taps, setTaps, setSelected, setAvgRating, selected }) {
+  console.log(selected);
   const [mapRef, setMapRef] = React.useState(null);
   const [center, setCenter] = React.useState({
     lat: 35.658057,
@@ -46,7 +47,7 @@ function Map({ taps, setTaps, setSelected }) {
         options={{ disableDefaultUI: true }}
       >
         {taps.map((item) => {
-          function opencard() {
+          async function opencard() {
             setSelected(item.id);
           }
           return (
