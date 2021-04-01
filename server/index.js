@@ -55,7 +55,7 @@ const axios = require("axios");
 
 app.get("/search/:lon/:lat/:rad", async (req, res) => {
   const allData = await axios.get(
-    `https://my-mizu-dev2-gen8n.ondigitalocean.app/dev-api/search/radius?longitude=${req.params.lon}&latitude=${req.params.lat}&radius=${req.params.rad}`,
+    `https://my-mizu-dev2-gen8n.ondigitalocean.app/dev-api/search/radius?longitude=${req.params.lon}&latitude=${req.params.lat}&radius=${req.params.rad}&l=ja`,
     {
       headers: {
         Authorization: `Bearer ${process.env.MY_MIZU_KEY}`,
