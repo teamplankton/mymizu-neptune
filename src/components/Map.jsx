@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
@@ -6,32 +7,33 @@ const containerStyle = {
   height: "90vh",
 };
 
-function Map() {
+function Map({ taps, setTaps, setSelected, setAvgRating, selected }) {
+  console.log(selected);
   const [mapRef, setMapRef] = React.useState(null);
   const [center, setCenter] = React.useState({
     lat: 35.658057,
     lng: 139.727424,
   });
 
+  const getPins = async (center) => {
+    await axios
+      .get(`/search/${center.lng}/${center.lat}/1000`)
+      .then((res) => {
+        setTaps(res.data.taps);
+      })
+      .catch((err) => {
+        console.log("error:", err);
+      });
+  };
+
+  React.useEffect(() => {
+    getPins(center);
+  }, [center]);
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_API_KEY,
   });
-
-  function opencard() {
-    console.log("here");
-  }
-  // const [map, setMap] = React.useState(null);
-
-  // const onLoad = React.useCallback(function callback(map) {
-  //   const bounds = new window.google.maps.LatLngBounds();
-  //   map.fitBounds(bounds);
-  //   setMap(map);
-  // }, []);
-
-  // const onUnmount = React.useCallback(function callback(map) {
-  //   setMap(null);
-  // }, []);
 
   return isLoaded ? (
     <>
@@ -40,15 +42,23 @@ function Map() {
         onDragEnd={() => setCenter(mapRef.getCenter().toJSON())}
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={14}
+        zoom={16}
+        mapId={"f79f2731e40b9866"}
         options={{ disableDefaultUI: true }}
       >
-        <Marker onClick={opencard} position={center} />
-        <></>
+        {taps.map((item) => {
+          async function opencard() {
+            setSelected(item.id);
+          }
+          return (
+            <Marker
+              key={item.id}
+              onClick={opencard}
+              position={{ lat: item.latitude, lng: item.longitude }}
+            />
+          );
+        })}
       </GoogleMap>
-      <h3>
-        Center {center.lat}, {center.lng}
-      </h3>
     </>
   ) : (
     <></>
