@@ -30,12 +30,9 @@ async function geocode(loc) {
 
 function RouteMap() {
   const [origin, setOrigin] = React.useState(null);
+  const [destination, setDestination] = React.useState(null);
   const [originLatLng, setOriginLatLng] = React.useState(null);
-
-  async function submit() {
-    const LatLng = await geocode(origin);
-    setOriginLatLng(LatLng);
-  }
+  const [destinationLatLng, setDestinationLatLng] = React.useState(null);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -54,6 +51,15 @@ function RouteMap() {
     }
   }
 
+  async function submit() {
+    const LatLngFrom = await geocode(origin);
+    setOriginLatLng(LatLngFrom);
+
+    const LatLngTo = await geocode(destination);
+    setDestinationLatLng(LatLngTo);
+    setResponse(null);
+  }
+
   return isLoaded ? (
     <>
       <GoogleMap
@@ -69,7 +75,7 @@ function RouteMap() {
           <DirectionsService
             // required
             options={{
-              destination: "roppongi",
+              destination: destinationLatLng,
               origin: originLatLng,
               waypoints: [
                 {
@@ -94,26 +100,56 @@ function RouteMap() {
         )}
       </GoogleMap>
 
-      <InputGroup
-        responsive
-        className="mb-3"
-        style={{
-          position: "absolute",
-          top: 60,
-          width: "50%",
-          left: "20%",
-        }}
-        onChange={(e) => {
-          setOrigin(e.target.value);
-        }}
-      >
-        <FormControl placeholder=" Where to?" aria-label="Where to?" />
+      <div>
+        {/*From Input*/}
+        <InputGroup
+          responsive
+          className="mb-3"
+          style={{
+            position: "absolute",
+            top: 60,
+            width: "50%",
+            left: "20%",
+          }}
+          onChange={(e) => {
+            setOrigin(e.target.value);
+          }}
+        >
+          <FormControl placeholder=" From?" aria-label="From?" />
+        </InputGroup>
+
+        {/*To Input*/}
+        <InputGroup
+          responsive
+          className="mb-3"
+          style={{
+            position: "absolute",
+            top: 98,
+            width: "50%",
+            left: "20%",
+          }}
+          onChange={(e) => {
+            setDestination(e.target.value);
+          }}
+        >
+          <FormControl placeholder=" To?" aria-label="To?" />
+        </InputGroup>
+
         <InputGroup.Append>
-          <Button variant="light" onClick={submit}>
+          <Button
+            style={{
+              position: "absolute",
+              top: 60,
+              height: 77,
+              left: "70%",
+            }}
+            variant="light"
+            onClick={submit}
+          >
             Search
           </Button>
         </InputGroup.Append>
-      </InputGroup>
+      </div>
     </>
   ) : (
     <></>

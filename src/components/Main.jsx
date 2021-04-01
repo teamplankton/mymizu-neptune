@@ -3,16 +3,30 @@ import Map from "./Map";
 import Info from "./Info";
 import Navbar from "./Navbar";
 import Rating from "./Rating";
-import Route from "./Route";
 
 export default function Main() {
-  const [view, setView] = useState(false);
+  const [taps, setTaps] = React.useState([]);
+  const [selected, setSelected] = React.useState(null);
+  const [rating, setRating] = React.useState(false);
   return (
     <>
       <div>
-        <Map />
+        <Map taps={taps} setTaps={setTaps} setSelected={setSelected} />
       </div>
-      {view ? <Info /> : <Navbar />}
+      <Navbar />
+      {selected && (
+        <Info
+          selected={taps.filter((i) => i.id === selected)[0]}
+          setSelected={setSelected}
+          setRating={setRating}
+        />
+      )}
+      {selected && rating && (
+        <Rating
+          selected={taps.filter((i) => i.id === selected)[0]}
+          setRating={setRating}
+        />
+      )}
     </>
   );
 }
