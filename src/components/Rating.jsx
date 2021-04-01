@@ -5,8 +5,9 @@ import { InputGroup, FormControl } from "react-bootstrap";
 import Box from "@material-ui/core/Box";
 import "./rating.css";
 import axios from "axios";
+import bottle from "./img/bottle.jpg";
 
-function Rating({ selected, setRatingDisplay }) {
+function Rating({ selected, setRatingDisplay, updateStar, setUpdateStar }) {
   const [star, setStar] = useState(3);
   const [comment, setComment] = useState("");
 
@@ -16,14 +17,14 @@ function Rating({ selected, setRatingDisplay }) {
       star: star,
       comment: comment,
     };
-    console.log(data);
     await axios.post("/api/rating", data);
+    setUpdateStar(!updateStar);
     setRatingDisplay(false);
   }
 
   return (
     <div className="ratingContainer">
-      <div>
+      <div className="ratingTitle">
         <h3>この場所で給水しますか？</h3>
       </div>
       <Box component="fieldset" mb={3} borderColor="transparent">
@@ -38,23 +39,26 @@ function Rating({ selected, setRatingDisplay }) {
           }}
         />
       </Box>
-      <img src="" alt="bottle" />
+      <img className="bottle" src={bottle} alt="bottle" />
       <div className="rating">
         <div className="star">コメントしてね！</div>
-        <InputGroup>
-          <FormControl
-            as="textarea"
-            rows={3}
-            placeholder="Any comments?..."
-            onChange={(e) => {
-              setComment(e.target.value);
-            }}
-          />
-        </InputGroup>
+        <div className="ratingInput">
+          <InputGroup>
+            <FormControl
+              as="textarea"
+              rows={3}
+              placeholder="Any comments?..."
+              onChange={(e) => {
+                setComment(e.target.value);
+              }}
+            />
+          </InputGroup>
+        </div>
       </div>
       <button className="info-button" onClick={sendRating}>
         給水を記録
       </button>
+      <div className="bottomBar"></div>
     </div>
   );
 }

@@ -5,21 +5,22 @@ function Info({ selected, setSelected, setRatingDisplay, avgRating }) {
   return (
     <div className="infoContainer">
       <div className="tapName">
-        <button className="closebtn"
+        <button
+          className="closebtn"
           onClick={() => {
             setSelected(null);
           }}
-          >
+        >
           ×
         </button>
-        <h3>{selected.name}</h3>
-        <p>{selected.address}</p>
+        <h4>{selected.name}</h4>
+        <p>📍{selected.address}</p>
       </div>
       <div className="aveRate">
         <p>{`⭐️ ${avgRating}`}</p>
       </div>
       {selected.photo_url && (
-        <div>
+        <div className="imgCon">
           <img className="infoImg" src={selected.photo_url} alt="photos" />
         </div>
       )}
@@ -35,6 +36,7 @@ function Info({ selected, setSelected, setRatingDisplay, avgRating }) {
           給水を記録
         </button>
       </div>
+      <div className="bottomBar"></div>
     </div>
   );
 }
