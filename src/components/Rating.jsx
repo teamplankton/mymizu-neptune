@@ -1,11 +1,15 @@
 import React from "react";
+import "./rating.css";
 
-function Rating() {
+function Rating({ selected, setRating }) {
+  function sendRating() {
+    setRating(false);
+  }
   return (
-    <div>
+    <div className="ratingContainer">
       <div>
         <h3>この場所で給水しますか？</h3>
-        <p>Code Chrysalis Japan</p>
+        <p>{selected.name}</p>
       </div>
       <img src="" alt="bottle" />
       <div className="rating">
@@ -14,7 +18,9 @@ function Rating() {
           <textarea></textarea>
         </div>
       </div>
-      <button className="info-button">給水を記録</button>
+      <button className="info-button" onClick={sendRating}>
+        給水を記録
+      </button>
     </div>
   );
 }
