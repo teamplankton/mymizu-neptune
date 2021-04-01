@@ -2,6 +2,7 @@
   position: absolute;
   bottom: 0;
   background-color: white;
+  width: 100%;
 }
 
 .tapName {
@@ -20,7 +21,7 @@
   background-color: #3199cf;
   border: none;
   border-radius: 10px;
-  margin: 5px;
+  margin: 5px 5px 15px 5px;
   font-size: larger;
 }
 
