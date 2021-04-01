@@ -39,6 +39,7 @@
 }
 #nav img {
   width: 40%;
+  max-width: 5vh;
   height: auto;
 }
 

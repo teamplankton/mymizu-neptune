@@ -10,6 +10,7 @@ export default function Main() {
   const [selected, setSelected] = React.useState(null);
   const [ratingDisplay, setRatingDisplay] = React.useState(false);
   const [avgRating, setAvgRating] = React.useState(null);
+  const [updateStar, setUpdateStar] = React.useState(false);
 
   React.useEffect(() => {
     async function getAvgRating() {
@@ -21,8 +22,10 @@ export default function Main() {
       const avg = totalStars / ratings.data.length;
       setAvgRating(avg.toFixed(1));
     }
-    getAvgRating();
-  }, [selected]);
+    if (selected) {
+      getAvgRating();
+    }
+  }, [selected, updateStar]);
 
   return (
     <>
@@ -48,6 +51,8 @@ export default function Main() {
         <Rating
           selected={taps.filter((i) => i.id === selected)[0]}
           setRatingDisplay={setRatingDisplay}
+          updateStar={updateStar}
+          setUpdateStar={setUpdateStar}
         />
       )}
     </>
