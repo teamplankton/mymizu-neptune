@@ -1,7 +1,7 @@
 import React from "react";
 import "./Info.css";
 
-function Info({ selected, setSelected, setRating }) {
+function Info({ selected, setSelected, setRatingDisplay, avgRating }) {
   return (
     <div className="infoContainer">
       <div className="tapName">
@@ -16,7 +16,7 @@ function Info({ selected, setSelected, setRating }) {
         <p>{selected.address}</p>
       </div>
       <div className="aveRate">
-        <p>★5.0</p>
+        <p>{`⭐️ ${avgRating}`}</p>
       </div>
       {selected.photo_url && (
         <div>
@@ -29,7 +29,7 @@ function Info({ selected, setSelected, setRating }) {
         <button
           className="info-button"
           onClick={() => {
-            setRating(true);
+            setRatingDisplay(true);
           }}
         >
           給水を記録
