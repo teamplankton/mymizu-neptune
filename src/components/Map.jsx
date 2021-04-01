@@ -55,6 +55,7 @@ function Map({ taps, setTaps, setSelected, setAvgRating, selected }) {
               key={item.id}
               onClick={opencard}
               position={{ lat: item.latitude, lng: item.longitude }}
+              icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
             />
           );
         })}

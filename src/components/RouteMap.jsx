@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -8,6 +9,7 @@ import {
   useJsApiLoader,
   DirectionsService,
   DirectionsRenderer,
+  Marker,
 } from "@react-google-maps/api";
 
 const containerStyle = {
@@ -28,11 +30,12 @@ async function geocode(loc) {
   return geodata.results[0].geometry.location;
 }
 
-function RouteMap() {
+function RouteMap({ setSelectedR, midTaps, setMidTaps }) {
   const [origin, setOrigin] = React.useState(null);
   const [destination, setDestination] = React.useState(null);
   const [originLatLng, setOriginLatLng] = React.useState(null);
   const [destinationLatLng, setDestinationLatLng] = React.useState(null);
+  const [midLatLng, setMidLatLng] = React.useState(null);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -57,6 +60,22 @@ function RouteMap() {
 
     const LatLngTo = await geocode(destination);
     setDestinationLatLng(LatLngTo);
+
+    await axios
+      .get(
+        `/search/${(LatLngFrom.lng + LatLngTo.lng) / 2}/${
+          (LatLngFrom.lat + LatLngTo.lat) / 2
+        }/500`
+      )
+      .then((res) => {
+        setMidTaps(res.data.taps);
+        const tapData = res.data.taps[0];
+        setMidLatLng({
+          lat: tapData.latitude,
+          lng: tapData.longitude,
+        });
+      });
+
     setResponse(null);
   }
 
@@ -79,7 +98,7 @@ function RouteMap() {
               origin: originLatLng,
               waypoints: [
                 {
-                  location: { lat: 35.665137, lng: 139.725094 },
+                  location: midLatLng,
                   stopover: true,
                 },
               ],
@@ -98,6 +117,19 @@ function RouteMap() {
             }}
           />
         )}
+
+        {midTaps.map((item) => {
+          function opencard() {
+            setSelectedR(item.id);
+          }
+          return (
+            <Marker
+              key={item.id}
+              onClick={opencard}
+              position={{ lat: item.latitude, lng: item.longitude }}
+            />
+          );
+        })}
       </GoogleMap>
 
       <div>
