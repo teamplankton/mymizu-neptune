@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+## MyMizu-neptune
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction on the Application
 
-## Available Scripts
+This is a team project created during our study in Code Chrysalis following a given user scenario.
 
-In the project directory, you can run:
+> mymizu と提携して、社会貢献を元に行なっているアプリに、mymizu が今まで達成してきたことを拡大または強化することを通して、もっと注目を集めたり、環境保全をより追及できるような機能（ルート検索やレーティング）を実装。
 
-### `yarn start`
+With mymizu which is doing environmental contribution by less using plastic bottles by knowing the places where you can get some water with your 水筒, we’re creating an app that users can know 給水所’s information and select the route and know where 給水所 around.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> You can access the deployed app from the following link:
+> https://mymizu-neptune.herokuapp.com/main > _Accessible from desktop or mobile._
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## User Manual and Limitation
 
-### `yarn test`
+ユーザーはピンをクリックしてその場所の情報がわかる。また、行きたいルートを検索できる。そしてそのルートの近くの給水所がわかる。その給水所の評価やコメントもできる。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As a user, one can click the pin where a 給水所 is and know the information. Also, one can select a route and know where 給水所 around the routes.
 
-### `yarn build`
+#### Click stream:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Click a pin
+2. Write a star or comment if you want
+3. Click on **給水を記録** (log refill here) button
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Click stream:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Click a Route
+2. Select **From** and **To**
+3. Click on **Search** button
 
-### `yarn eject`
+#### Features not yet realized:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Filter refill by kind of water
