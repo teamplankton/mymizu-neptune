@@ -2,15 +2,27 @@
   position: absolute;
   bottom: 0;
   background-color: white;
+  height: 65%;
   width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.info-top {
+  height: 83%;
+  overflow: auto;
 }
 
 .tapName {
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-top: 15px;
 }
 
 .infoImg {
-  width: 80px;
-  height: 80px;
+  width: 150px;
+  height: 150px;
   border-radius: 10px;
 }
 
@@ -29,9 +41,13 @@
   text-align: left;
   margin: 15px;
 }
+.info-comments {
+  text-align: left;
+  margin: 15px;
+}
 
 .closebtn {
-  font-size: 100%;/*ボタンの大きさ*/
+  font-size: 100%; /*ボタンの大きさ*/
   font-weight: bold;
   border: 1px;
   color: #999;
@@ -42,13 +58,22 @@
   width: 1.3em;
   line-height: 1.3em;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
   float: right;
   margin-right: 10px;
   margin-top: 10px;
 }
 
-.closebtn:hover{
+.closebtn:hover {
   opacity: 0.5;
   color: #999;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }

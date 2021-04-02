@@ -4,4 +4,37 @@
   background-color: white;
   width: 100%;
   box-shadow: 5px 5px 15px 5px grey;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.css-1vvqeqx {
+  margin-bottom: 0%;
+}
+
+.closebtn {
+  font-size: 100%; /*ボタンの大きさ*/
+  font-weight: bold;
+  border: 1px;
+  color: #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  width: 1.3em;
+  line-height: 1.3em;
+  cursor: pointer;
+  transition: 0.2s;
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.closebtn:hover {
+  opacity: 0.5;
+  color: #999;
+}
+
+#rating-header {
+  margin-top: 15px;
 }
