@@ -120,7 +120,6 @@ function RouteMap({ setSelectedR, midTaps, setMidTaps }) {
 
         {midTaps.map((item) => {
           function opencard() {
-            console.log(item);
             setSelectedR(item.id);
           }
           return (
