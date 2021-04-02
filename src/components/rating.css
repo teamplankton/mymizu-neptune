@@ -12,6 +12,10 @@
   margin-bottom: 0%;
 }
 
+.ratingInput {
+  margin: 15px;
+}
+
 .closebtn {
   font-size: 100%; /*ボタンの大きさ*/
   font-weight: bold;
