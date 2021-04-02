@@ -24,7 +24,7 @@ function Info({
           <h4>
             {selected.name} {`⭐️ ${avgRating}`}
           </h4>
-          <p>{selected.address}</p>
+          <p>📍{selected.address}</p>
         </div>
         <hr />
         {selected.photo_url && (
@@ -56,6 +56,7 @@ function Info({
           給水を記録
         </button>
       </div>
+      <div className="bottomBar"></div>
     </div>
   );
 }

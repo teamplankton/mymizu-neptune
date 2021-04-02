@@ -8,7 +8,7 @@ import "./rating.css";
 import "./rating.css";
 import axios from "axios";
 
-function Rating({ selected, setRatingDisplay }) {
+function Rating({ selected, setRatingDisplay, updateStar, setUpdateStar }) {
   const [star, setStar] = useState(3);
   const [comment, setComment] = useState("");
 
@@ -18,8 +18,8 @@ function Rating({ selected, setRatingDisplay }) {
       star: star,
       comment: comment,
     };
-    console.log(data);
     await axios.post("/api/rating", data);
+    setUpdateStar(!updateStar);
     setRatingDisplay(false);
   }
 
@@ -51,20 +51,23 @@ function Rating({ selected, setRatingDisplay }) {
       <img src={bottle} alt="bottle" width="150" height="150" />
       <div className="rating">
         <div className="star">コメントしてね！</div>
-        <InputGroup>
-          <FormControl
-            as="textarea"
-            rows={3}
-            placeholder="Any comments?..."
-            onChange={(e) => {
-              setComment(e.target.value);
-            }}
-          />
-        </InputGroup>
+        <div className="ratingInput">
+          <InputGroup>
+            <FormControl
+              as="textarea"
+              rows={3}
+              placeholder="Any comments?..."
+              onChange={(e) => {
+                setComment(e.target.value);
+              }}
+            />
+          </InputGroup>
+        </div>
       </div>
       <button className="info-button" onClick={sendRating}>
         給水を記録
       </button>
+      <div className="bottomBar"></div>
     </div>
   );
 }

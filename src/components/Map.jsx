@@ -8,7 +8,6 @@ const containerStyle = {
 };
 
 function Map({ taps, setTaps, setSelected, setAvgRating, selected }) {
-  console.log(selected);
   const [mapRef, setMapRef] = React.useState(null);
   const [center, setCenter] = React.useState({
     lat: 35.6306759,
