@@ -10,16 +10,23 @@ export default function Main() {
   const [selected, setSelected] = React.useState(null);
   const [ratingDisplay, setRatingDisplay] = React.useState(false);
   const [avgRating, setAvgRating] = React.useState(null);
+  const [comments, setComments] = React.useState([]);
   const [updateStar, setUpdateStar] = React.useState(false);
 
   React.useEffect(() => {
     async function getAvgRating() {
       const ratings = await axios.get(`/api/rating/${selected}`);
       let totalStars = 0;
+      let comm = [];
       for (let arr of ratings.data) {
+        let rate = [];
+        rate.push(arr.comment);
+        rate.push(arr.star);
+        comm.push(rate);
         totalStars += arr.star;
       }
       const avg = totalStars / ratings.data.length;
+      setComments(comm);
       setAvgRating(avg.toFixed(1));
     }
     if (selected) {
@@ -45,6 +52,7 @@ export default function Main() {
           setSelected={setSelected}
           setRatingDisplay={setRatingDisplay}
           avgRating={avgRating}
+          comments={comments}
         />
       )}
       {selected && ratingDisplay && (

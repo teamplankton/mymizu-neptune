@@ -10,8 +10,8 @@ const containerStyle = {
 function Map({ taps, setTaps, setSelected, setAvgRating, selected }) {
   const [mapRef, setMapRef] = React.useState(null);
   const [center, setCenter] = React.useState({
-    lat: 35.658057,
-    lng: 139.727424,
+    lat: 35.6306759,
+    lng: 139.6238296,
   });
 
   const getPins = async (center) => {
@@ -54,7 +54,6 @@ function Map({ taps, setTaps, setSelected, setAvgRating, selected }) {
               key={item.id}
               onClick={opencard}
               position={{ lat: item.latitude, lng: item.longitude }}
-              icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
             />
           );
         })}

@@ -3,9 +3,10 @@ import { Rating as Rate } from "@material-ui/lab";
 import Typography from "@material-ui/core/Typography";
 import { InputGroup, FormControl } from "react-bootstrap";
 import Box from "@material-ui/core/Box";
+import bottle from "./img/bottle.jpg";
+import "./rating.css";
 import "./rating.css";
 import axios from "axios";
-import bottle from "./img/bottle.jpg";
 
 function Rating({ selected, setRatingDisplay, updateStar, setUpdateStar }) {
   const [star, setStar] = useState(3);
@@ -24,7 +25,15 @@ function Rating({ selected, setRatingDisplay, updateStar, setUpdateStar }) {
 
   return (
     <div className="ratingContainer">
-      <div className="ratingTitle">
+      <button
+        className="closebtn"
+        onClick={() => {
+          setRatingDisplay(false);
+        }}
+      >
+        ×
+      </button>
+      <div id="rating-header">
         <h3>この場所で給水しますか？</h3>
       </div>
       <Box component="fieldset" mb={3} borderColor="transparent">
@@ -39,7 +48,7 @@ function Rating({ selected, setRatingDisplay, updateStar, setUpdateStar }) {
           }}
         />
       </Box>
-      <img className="bottle" src={bottle} alt="bottle" />
+      <img src={bottle} alt="bottle" width="150" height="150" />
       <div className="rating">
         <div className="star">コメントしてね！</div>
         <div className="ratingInput">

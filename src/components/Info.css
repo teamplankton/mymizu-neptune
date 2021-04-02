@@ -2,27 +2,27 @@
   position: absolute;
   bottom: 0;
   background-color: white;
+  height: 65%;
   width: 100%;
-  box-shadow: 5px 5px 15px 5px grey;
-  border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.info-top {
+  height: 83%;
+  overflow: auto;
 }
 
 .tapName {
   text-align: left;
-  margin: 15px;
-}
-
-.imgCon {
-  width: 100%;
-  padding: 0 10px 0 10px;
-  border-top: #e3e3e3 1px solid;
-  border-bottom: #e3e3e3 1px solid;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-top: 15px;
 }
 
 .infoImg {
-  width: 80px;
-  height: 80px;
+  width: 150px;
+  height: 150px;
   border-radius: 10px;
 }
 
@@ -38,6 +38,10 @@
 }
 
 .info {
+  text-align: left;
+  margin: 15px;
+}
+.info-comments {
   text-align: left;
   margin: 15px;
 }
@@ -63,8 +67,11 @@
   color: #999;
 }
 
-.bottomBar {
-  width: 100%;
-  height: 20px;
-  background-color: white;
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
