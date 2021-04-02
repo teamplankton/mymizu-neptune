@@ -65,7 +65,7 @@ function RouteMap({ setSelectedR, midTaps, setMidTaps }) {
       .get(
         `/search/${(LatLngFrom.lng + LatLngTo.lng) / 2}/${
           (LatLngFrom.lat + LatLngTo.lat) / 2
-        }/500`
+        }/1000`
       )
       .then((res) => {
         setMidTaps(res.data.taps);
